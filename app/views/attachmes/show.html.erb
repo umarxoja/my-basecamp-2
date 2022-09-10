@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @attachme %>
+
+<div>
+  <%= link_to "Edit this attachme", edit_attachme_path(@attachme) %> |
+  <%= link_to "Back to attachmes", attachmes_path %>
+
+  <%= button_to "Destroy this attachme", @attachme, method: :delete %>
+</div>

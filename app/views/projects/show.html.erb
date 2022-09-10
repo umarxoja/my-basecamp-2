@@ -1,0 +1,14 @@
+
+
+<div class="project-uchun mt-3 px-4">
+  <%= link_to "Edit this project", edit_project_path(@project), class:"btn btn-primary"%>
+  <%= button_to "Destroy this project", @project, method: :delete, class: "btn btn-danger"%>
+  <%= link_to 'New Attachment', new_project_attachme_path(@project.id), class: 'btn btn-info' %>
+  <%= link_to "Back to projects", projects_path, class: 'btn btn-primary'%>
+</div>
+
+<div class="orta">
+  <div class="row  mt-5 mx-5 vol" >
+    <h1><%= @project.name %></h1>
+  </div>
+</div>

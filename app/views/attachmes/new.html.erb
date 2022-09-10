@@ -1,0 +1,53 @@
+<h1 style="text-align:center; color: white;">Uploader</h1> <br>
+<div class="box-23" align="center">
+<%= form_for([@attachme.project, @attachme]) do |f| %>
+  <% if @attachme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attachme.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @attachme.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div>
+      <%= f.file_field :upload %> <br> <br>
+
+      <%= f.submit "Add", class:"btn btn-primary btn_add"%>
+
+      <% end %>
+
+
+              <% @attachmes.each do |attachme| %>
+                <% if attachme.upload.attached? %>
+                  <% if  attachme.upload.image?%> <br>
+                  <%= link_to image_tag(attachme.upload, class: "img_upload"),  rails_blob_path(attachme.upload, disposition: "attachment") %> <br>
+                  <% elsif attachme.upload.audio? %>
+                  <%= attachme.upload.filename %>
+                  <audio controls>
+                  <source src=" <%= rails_blob_url(attachme.upload, disposition: "attachment") %>" type="audio/mpeg"/> <br>
+                  </audio> <br>
+                  <% else %>
+                  <%= link_to attachme.upload.filename,  rails_blob_path(attachme.upload, disposition: "attachment") %> <br>
+                  <% end %> <br>
+
+
+
+                <%= link_to 'Destroy', [attachme.project, attachme], 'data-turbo-method': :delete, class: "more-link"  %> <br>
+
+            <% end %>
+
+            <% end %>
+          <br><br>
+
+
+
+
+
+<%= link_to project_path(@project.id) do %>
+<button class="btn btn-danger">Back</button>
+
+<% end %>
+</div>

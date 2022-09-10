@@ -1,0 +1,28 @@
+<div class="box-2">
+
+  <div class="project-uchun mt-3 px-4">
+    <h1>Posts</h1>
+<%= link_to "New Post", new_post_path, class: "btn btn-primary"%>
+  </div>
+
+<div class="row  mt-5 mx-5" style="margin-left: 10px;">
+  <% @posts.each do |post| %>
+<div class="card" style="width: 18rem; margin-left: 7px;" >
+  <div class="card-body">
+     <h5 class="card-title"><%= post.title %></h5>
+<p class="card-text"><%= post.body %>.</p>
+<p class="card-text">Author <i class="bi bi-person"></i> <%= post.user.email %></p>
+<p class="card-text"><i class="bi bi-eye-fill"></i> <%= post.views %> views</p>
+        <p href="#" class="card-link"><%= link_to post do %>
+    <p>Show All</p>
+    </p><% end %>
+  </div>
+</div>
+ <% end %>
+
+
+
+
+</div> <br> <br>
+
+
